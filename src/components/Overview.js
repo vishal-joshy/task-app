@@ -11,7 +11,11 @@ class Overview extends React.Component {
 			<div>
 				<ul>
 					{tasks.map((task) => {
-						return <li key={task.id}>{task.text}</li>;
+						return (
+							<li key={task.id}>
+								{task.taskNumber}.{task.text}
+							</li>
+						);
 					})}
 				</ul>
 			</div>

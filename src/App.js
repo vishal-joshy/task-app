@@ -8,6 +8,7 @@ class App extends React.Component {
 
 		this.state = {
 			inputValue: {
+				taskNumber: 0,
 				text: '',
 				id: uniqid(),
 			},
@@ -23,6 +24,7 @@ class App extends React.Component {
 		this.setState({
 			tasks: this.state.tasks.concat(this.state.inputValue), //Array.push is mutable use concat on state
 			inputValue: {
+				taskNumber: this.state.inputValue.taskNumber + 1,
 				text: '',
 				id: uniqid(),
 			},
@@ -34,8 +36,10 @@ class App extends React.Component {
 			inputValue: {
 				text: e.target.value,
 				id: this.state.inputValue.id,
+				taskNumber: this.state.inputValue.taskNumber,
 			},
 		});
+		console.log(this.state.inputValue.taskNumber);
 	}
 
 	render() {
