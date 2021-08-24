@@ -4,9 +4,10 @@ class Overview extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-    
+
 	render() {
-		return <div>{this.props.title}</div>;
+		const { task } = this.props;
+		return <div>{this.props.task}</div>;
 	}
 }
 

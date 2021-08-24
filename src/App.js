@@ -7,6 +7,7 @@ class App extends React.Component {
 
 		this.state = {
 			inputValue: '',
+			tasks: [],
 		};
 
 		this.onSubmitForm = this.onSubmitForm.bind(this);
@@ -14,8 +15,13 @@ class App extends React.Component {
 	}
 
 	onSubmitForm(e) {
+		const { inputValue } = this.state;
 		e.preventDefault();
-		console.log(this.state.inputValue);
+		this.setState({
+			tasks: this.state.tasks.concat(inputValue),     //Array.push is mutable use concat on state
+		});
+
+		console.log(this.state.tasks);
 	}
 	onTaskInput(e) {
 		this.setState({
@@ -35,7 +41,7 @@ class App extends React.Component {
 				</form>
 				<div>
 					<h3>Task List</h3>
-					<Overview title="component Test" />
+					<Overview task={this.state.inputValue} />
 				</div>
 			</div>
 		);
