@@ -1,12 +1,16 @@
 import React from 'react';
 import Overview from './components/Overview';
+import uniqid from 'uniqid';
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			inputValue: '',
+			inputValue: {
+				text: '',
+				id: uniqid(),
+			},
 			tasks: [],
 		};
 
@@ -18,12 +22,19 @@ class App extends React.Component {
 		e.preventDefault();
 		this.setState({
 			tasks: this.state.tasks.concat(this.state.inputValue), //Array.push is mutable use concat on state
-			inputValue: '',
+			inputValue: {
+				text: '',
+				id: uniqid(),
+			},
 		});
+		console.log(this.state.tasks);
 	}
 	onTaskInput(e) {
 		this.setState({
-			inputValue: e.target.value,
+			inputValue: {
+				text: e.target.value,
+				id: this.state.inputValue.id,
+			},
 		});
 	}
 
@@ -35,7 +46,7 @@ class App extends React.Component {
 					<input
 						type="text"
 						placeholder="eg. Task 1"
-						value={this.state.inputValue}
+						value={this.state.inputValue.text}
 						onChange={this.onTaskInput}
 					></input>
 					<button type="submit" onClick={this.onSubmitForm}>
