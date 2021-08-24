@@ -15,10 +15,10 @@ class App extends React.Component {
 	}
 
 	onSubmitForm(e) {
-		const { inputValue } = this.state;
 		e.preventDefault();
 		this.setState({
-			tasks: this.state.tasks.concat(inputValue), //Array.push is mutable use concat on state
+			tasks: this.state.tasks.concat(this.state.inputValue), //Array.push is mutable use concat on state
+			inputValue: '',
 		});
 	}
 	onTaskInput(e) {
@@ -32,7 +32,12 @@ class App extends React.Component {
 			<div>
 				<form>
 					<label>Input task Name</label>
-					<input type="text" placeholder="eg. Task 1" onChange={this.onTaskInput}></input>
+					<input
+						type="text"
+						placeholder="eg. Task 1"
+						value={this.state.inputValue}
+						onChange={this.onTaskInput}
+					></input>
 					<button type="submit" onClick={this.onSubmitForm}>
 						Add Task
 					</button>
