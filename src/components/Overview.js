@@ -6,8 +6,16 @@ class Overview extends React.Component {
 	}
 
 	render() {
-		const { task } = this.props;
-		return <div>{this.props.task}</div>;
+		const { tasks } = this.props;
+		return (
+			<div>
+				<ul>
+					{tasks.map((task) => {
+						return <li>{task}</li>;
+					})}
+				</ul>
+			</div>
+		);
 	}
 }
 

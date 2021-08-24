@@ -18,10 +18,8 @@ class App extends React.Component {
 		const { inputValue } = this.state;
 		e.preventDefault();
 		this.setState({
-			tasks: this.state.tasks.concat(inputValue),     //Array.push is mutable use concat on state
+			tasks: this.state.tasks.concat(inputValue), //Array.push is mutable use concat on state
 		});
-
-		console.log(this.state.tasks);
 	}
 	onTaskInput(e) {
 		this.setState({
@@ -41,7 +39,7 @@ class App extends React.Component {
 				</form>
 				<div>
 					<h3>Task List</h3>
-					<Overview task={this.state.inputValue} />
+					<Overview tasks={this.state.tasks} />
 				</div>
 			</div>
 		);
